@@ -5,7 +5,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const ostArrows = document.getElementsByClassName('arrowButton-ost');
     let ostName: HTMLParagraphElement | null = document.getElementById('ost-name') as HTMLParagraphElement; 
     const ostArrowLeft: HTMLImageElement = ostArrows[0] as HTMLImageElement;
-    const ostArrowRight: HTMLImageElement = ostArrows[1] as HTMLImageElement;
+    const ostArrowRight: HTMLImageElement = ostArrows[2] as HTMLImageElement;
+    const playButton: HTMLImageElement = <HTMLImageElement>document.getElementById('pauseButton'); //me: uses as | also me: >proceeds to do <type>
     let ostTime: HTMLParagraphElement = document.getElementById('ost-time') as HTMLParagraphElement;
     let ostImage: HTMLImageElement = document.getElementById('songImage') as HTMLImageElement;
 
@@ -13,6 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let ostImages: string[] = ['https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg', '../Assets/Images/DeleteLater/Undertale_2022_Poster.png', 'https://assets1.ignimgs.com/2018/01/23/celeste---button-1516746065043.jpg'];
     let currentSongNum: number = 0;
     let isFirst: boolean = true;
+    let playing: boolean = false; //for pause button, not done yet. comment .
 
     console.log(ost)
     //ost.play();
@@ -21,6 +23,8 @@ window.addEventListener("DOMContentLoaded", () => {
     function changeOst(arrow: HTMLImageElement): void {
         arrow.addEventListener('click', () =>{
             //if theres a better way to do this, please tell me.
+            playing = true;
+            playButton.src = '../Assets/Images/PauseButton/stop_circle_FILL0_wght400_GRAD0_opsz24.svg';
             if (ost && ostName && ostTime) {
 
             if (arrow.id.includes('right') && !isFirst) {
@@ -92,10 +96,34 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
     })
+    
     }
+    
+    function stopPlayButton(button: HTMLImageElement): void {
+        button.addEventListener('click', () => { //what the hell is readable code
+            if(!playing) { //why use !paused? well, I accidentally switched their places, but was too lazy to switch the places of their code.
+                button.src = '../Assets/Images/PauseButton/stop_circle_FILL0_wght400_GRAD0_opsz24.svg';
+                ost?.play();
+                playing = true;
+
+                
+                isFirst = false;
+                ostImage.src = ostImages[currentSongNum] //I promise to do better code reusability in my next project, I swear.
+                let songString: string | undefined = ostList[currentSongNum].split("/").pop();
+                ostName ? songString ? ostName.innerHTML = songString : console.log('No song name found.') : console.log('No song name.');
+            }
+            else {
+                button.src = '../Assets/Images/PauseButton/play_circle_FILL0_wght400_GRAD0_opsz24.svg';
+                playing = false;
+                ost?.pause();
+            };
+    })
+    }
+
     //This whole file is a fucking mess, I'm very sorry to all my programmer friends.
     changeOst(ostArrowLeft);
     changeOst(ostArrowRight);
+    stopPlayButton(playButton)
     })
 
 
