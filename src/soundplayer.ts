@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let ostTime: HTMLParagraphElement = document.getElementById('ost-time') as HTMLParagraphElement;
     let ostImage: HTMLImageElement = document.getElementById('songImage') as HTMLImageElement;
 
-    let ostList: string[] = ['../Osts/Children of the Ruins.mp3', '../Osts/toby fox - UNDERTALE Soundtrack - 09 Enemy Approaching.mp3', '../Ost/First Steps']; //dont forget to make backend.
+    let ostList: string[] = ['../Osts/Children of the Ruins.mp3', '../Osts/toby fox - UNDERTALE Soundtrack - 09 Enemy Approaching.mp3', '../Osts/First Steps.mp3']; //dont forget to make backend.
     let ostImages: string[] = ['https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg', 'https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg'];
     let currentSongNum: number = 0;
 
@@ -27,23 +27,25 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 if (currentSongNum == ostList.length) {
                     currentSongNum = 0;
+                    ostImage.src = ostImages[currentSongNum]
                 }
 
                 ost.play();           
             }
             else {
                 currentSongNum = currentSongNum - 1;
-                ost.src = ostList[currentSongNum]; ostImage.src = ostImages[currentSongNum];
+                ost.src = ostList[currentSongNum]; 
+                ostImage.src = ostImages[currentSongNum];
                 
                 if (currentSongNum < 0) {
                     currentSongNum = ostList.length - 1;
+                    ostImage.src = ostImages[currentSongNum]
                 }
                 ost.play();
             }
             
             ostTime.addEventListener('change', () => {ostTime.innerHTML = `${formatTime(ost.currentTime)} ⫻ ${formatTime(ost.duration)}`;})
             let songString: string | undefined = ostList[currentSongNum].split("/").pop();
-            songString = ostList[currentSongNum].split(".mp3").pop();
 
             songString ? ostName.innerHTML = songString : console.log('No song name found.'); 
             

@@ -71,6 +71,7 @@ body {
     height: 20vh;
     position: absolute;
     display: flex;
+    align-items: center;
 }
 
 #osts {

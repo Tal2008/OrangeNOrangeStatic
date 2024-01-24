@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const ostArrowRight = ostArrows[1];
     let ostTime = document.getElementById('ost-time');
     let ostImage = document.getElementById('songImage');
-    let ostList = ['../Osts/Children of the Ruins.mp3', '../Osts/toby fox - UNDERTALE Soundtrack - 09 Enemy Approaching.mp3', '../Ost/First Steps']; //dont forget to make backend.
+    let ostList = ['../Osts/Children of the Ruins.mp3', '../Osts/toby fox - UNDERTALE Soundtrack - 09 Enemy Approaching.mp3', '../Osts/First Steps.mp3']; //dont forget to make backend.
     let ostImages = ['https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg', 'https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg'];
     let currentSongNum = 0;
     console.log(ost);
@@ -37,7 +37,6 @@ window.addEventListener("DOMContentLoaded", () => {
                 }
                 ostTime.addEventListener('change', () => { ostTime.innerHTML = `${formatTime(ost.currentTime)} ⫻ ${formatTime(ost.duration)}`; });
                 let songString = ostList[currentSongNum].split("/").pop();
-                songString = ostList[currentSongNum].split(".mp3").pop();
                 songString ? ostName.innerHTML = songString : console.log('No song name found.');
                 ostTime.innerHTML = `${formatTime(ost.currentTime)} ⫻ ${formatTime(ost.duration)}`;
             }
