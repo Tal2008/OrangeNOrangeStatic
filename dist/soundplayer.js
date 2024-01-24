@@ -9,8 +9,9 @@ window.addEventListener("DOMContentLoaded", () => {
     let ostTime = document.getElementById('ost-time');
     let ostImage = document.getElementById('songImage');
     let ostList = ['../Osts/Children of the Ruins.mp3', '../Osts/Enemy Approaching.mp3', '../Osts/First Steps.mp3']; //dont forget to make backend.
-    let ostImages = ['https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg', 'https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg'];
+    let ostImages = ['https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg', '../Assets/Images/DeleteLater/Undertale_2022_Poster.png', 'https://assets1.ignimgs.com/2018/01/23/celeste---button-1516746065043.jpg'];
     let currentSongNum = 0;
+    let isFirst = true;
     console.log(ost);
     //ost.play();
     // DONT FORGET TO GET IMAGES VIA API
@@ -18,25 +19,27 @@ window.addEventListener("DOMContentLoaded", () => {
         arrow.addEventListener('click', () => {
             //if theres a better way to do this, please tell me.
             if (ost && ostName && ostTime) {
-                if (arrow.id.includes('right')) {
+                if (arrow.id.includes('right') && !isFirst) {
                     currentSongNum++;
-                    ost.src = ostList[currentSongNum];
                     ostImage.src = ostImages[currentSongNum];
                     if (currentSongNum == ostList.length) {
                         currentSongNum = 0;
-                        ostImage.src = ostImages[currentSongNum];
+                        ostName.innerHTML = 'loading...';
                     }
-                    ost.play();
                 }
-                else {
+                else if (!isFirst) {
                     currentSongNum = currentSongNum - 1;
                     ost.src = ostList[currentSongNum];
                     ostImage.src = ostImages[currentSongNum];
                     if (currentSongNum < 0) {
                         currentSongNum = ostList.length - 1;
-                        ostImage.src = ostImages[currentSongNum];
                     }
                 }
+                ostImage.src = ostImages[currentSongNum];
+                ost.src = ostList[currentSongNum];
+                isFirst = false;
+                console.log(currentSongNum); //debug
+                ost.play();
                 ost.addEventListener('loadedmetadata', () => {
                     ostTime.innerHTML = `${formatTime(ost.currentTime)} // ${formatTime(ost.duration)}`;
                     ost.play();
@@ -51,6 +54,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 const seconds = Math.floor(time % 60);
                 return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
             }
+            console.log(currentSongNum); //debug
             ost ? ost.addEventListener('ended', () => {
                 currentSongNum++;
                 if (currentSongNum >= ostList.length) {
