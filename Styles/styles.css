@@ -67,9 +67,10 @@ body {
 
 #ostContainer {
     background-color: black;
-    width: 20vw;
+    width: fit-content;
     height: 20vh;
     position: absolute;
+    display: flex;
 }
 
 #osts {
@@ -81,9 +82,18 @@ body {
 .arrowButton-ost {    
     height: 40%;
     filter: invert();
+    cursor: pointer;
 }
 
 #arrowButton-2 {
     transform: rotate(180deg);
 }
  
+#songImage {
+    height: 50%;
+    border-radius: 10px;
+}
+
+#ostContainer p {
+    filter: invert();
+}

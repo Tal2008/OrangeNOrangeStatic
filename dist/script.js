@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
         window.location.href = "https://undertale.com/";
         console.log('Ho');
     });
+    //DOnt delete:
 });
 const gamesArray = games.split('⫻');
 console.log(gamesArray);
