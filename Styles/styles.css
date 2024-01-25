@@ -67,15 +67,19 @@ body {
 
 #ostContainer {
     background-color: black;
-    width: fit-content;
-    height: 20vh;
+    width: auto;
+    height: 8vh;
     position: absolute;
     display: flex;
     align-items: center;
+    padding: 0.5rem;
+    transition: all 0.2;
+    -moz-transition: all 0.2s;
+    opacity: 20%;
+    border-radius: 10px;
 }
 
 #osts {
-    opacity: 50%;
     display: flex;
     justify-content: end;
 }
@@ -91,10 +95,17 @@ body {
 }
  
 #songImage {
+    margin-right: 0.2rem;
     height: 50%;
-    border-radius: 10px;
+    border-radius: 2px;
+    overflow: hidden;
 }
 
 #ostContainer p {
     filter: invert();
+    font-size: small;
+}
+
+#ostContainer:hover {
+    opacity: 50%;
 }
