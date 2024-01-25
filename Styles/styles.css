@@ -35,7 +35,6 @@ body {
 
 #gamePics {
     display: flex;
-    direction: column;
     justify-content: center;
 }
 
@@ -73,7 +72,7 @@ body {
     display: flex;
     align-items: center;
     padding: 0.5rem;
-    transition: all 0.2;
+    transition: all 0.2s;
     -moz-transition: all 0.2s;
     opacity: 20%;
     border-radius: 10px;
@@ -106,6 +105,38 @@ body {
     font-size: small;
 }
 
-#ostContainer:hover {
+#ost-toggle:hover {
+    cursor: pointer;
     opacity: 50%;
+    /* animation: showLeft 0.5s ease 0s 1 normal forwards; It was for testing. */ 
+}
+
+#ost-toggle {
+    height: 8vh;
+    position: absolute;
+    
+    transition: all 2s;
+    -moz-transition: all 2s;
+}
+
+/* Properties and animations. */
+
+.hidden {
+    display: none !important;
+};
+
+.leftScreenAnimation {
+    animation: showLeft 0.5s ease 0s 1 normal forwards;
+}
+
+@keyframes showLeft {
+	0% {
+		transform: translateX(375px);
+        display: absolute;
+	}
+
+	100% {
+        display: initial;
+		transform: translateX(0);
+	}
 }

@@ -1,4 +1,7 @@
+// import { animationHandler, hideDiv } from "./hideDiv";  //animation + toggle
+
 //I vow to never create anything as messy as this ever again.
+
 
 window.addEventListener("DOMContentLoaded", () => {
     const ost: HTMLAudioElement | null = document.getElementById('audio-html') as HTMLAudioElement;
@@ -130,3 +133,41 @@ window.addEventListener("DOMContentLoaded", () => {
 function formatTime(currentTime: number) {
     throw new Error("Function not implemented.");
 }
+
+//Before you say anything (though you can, I appreciate feedback.):
+//I tried just using it as a module, but it always gave me an error.
+//One time it gives me some random error and the other it gives me a CORS error.
+//Tried fixing it, but this is the fastest way to solve this.
+
+
+window.addEventListener("DOMContentLoaded", () => {
+//Yeah this probably isn't the best way to do this.
+    const ostToggle: HTMLImageElement = document.getElementById('ost-toggle') as HTMLImageElement;
+    const ostContainer = document.getElementById('ostContainer') as HTMLDivElement;
+
+
+    //forgive me for what I am about to do
+    // hideDiv.ts
+    function hideDiv(hider: any, hidden: HTMLDivElement, animation?: string): void {
+        if (animation) {
+            var clicked: boolean = false; //if its let, then the variable isn't available in hider clicker.
+        }
+
+        
+        hider.addEventListener('click', () => {
+            clicked = true;
+
+            hidden.classList.toggle('hidden');
+
+
+            animation ? animationHandler(animation, hidden, clicked) : console.log('No animation.');
+        });
+    }
+
+    function animationHandler(animation: string, object: any, clicked: boolean): void {
+        object.classList.toggle(animation);
+    }
+
+
+    hideDiv(ostToggle, ostContainer, "leftScreenAnimation");
+});
