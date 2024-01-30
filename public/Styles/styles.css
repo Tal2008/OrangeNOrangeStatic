@@ -1,0 +1,155 @@
+@font-face {
+    font-family: pixel;
+    src: url(../fonts/pixeled/Pixeled.ttf)
+
+} 
+
+* {
+    font-family: pixel;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+#top-part {
+    margin-top: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   /* border-bottom: 1vh pink solid; */
+}
+
+#text {
+    margin-top: auto;
+    font-size: 3rem;
+    margin-left: 2vw
+}
+
+#pfp {
+    width: 15vw;
+    border-radius: 10px;
+}
+
+#gamePics {
+    display: flex;
+    justify-content: center;
+}
+
+.game {
+    box-sizing: border-box;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 181, 103);
+    align-items: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.gamePictures {
+    max-width: 20vw;
+    margin-right: 2vw;
+    filter: grayscale(0.8);
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+
+.gamePictures:hover {
+    filter: grayscale(0);
+    cursor: pointer;
+}
+
+#ostContainer {
+    background-color: black;
+    width: auto;
+    height: 8vh;
+    position: sticky;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    opacity: 10%;
+    border-radius: 10px;
+    margin-left: 1rem;
+}
+
+#osts {
+    display: flex;
+    justify-content: end;
+}
+
+.arrowButton-ost {    
+    height: 40%;
+    filter: invert();
+    cursor: pointer;
+}
+
+#arrowButton-2 {
+    transform: rotate(180deg);
+}
+ 
+#songImage {
+    margin-right: 0.2rem;
+    height: 50%;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+#ostContainer p {
+    filter: invert();
+    font-size: small;
+}
+
+#ostContainer:hover {
+    opacity: 50%;
+}
+
+#ost-toggle:hover {
+    cursor: pointer;
+    opacity: 50%;
+    /* animation: showLeft 0.5s ease 0s 1 normal forwards; It was for testing. */ 
+}
+
+#ost-toggle {
+    height: 6vh;
+    opacity: 0.2;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    align-self: center;
+}
+
+#GamesShowcase {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    filter: blur(1vh);
+    z-index: -1;
+}
+
+/* Properties and animations. */
+
+.hidden {
+    display: none !important;
+};
+
+.leftScreenAnimation {
+    animation: showLeft 0.5s ease 0s 1 normal forwards;
+}
+
+@keyframes showLeft {
+	0% {
+		transform: translateX(375px);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+

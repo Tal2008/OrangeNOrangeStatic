@@ -1,0 +1,50 @@
+<!DOCTYPE html> <!-- CHANGE PFP FROM WEBSITE TO FILE -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrangeNORange</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css">
+    <script src="../dist/script.js"></script>
+    <script src="../dist/soundplayer.js"></script>
+</head>
+<body>
+    <div id="osts">
+        <img id="ost-toggle" src="../Assets/Images/rounded-headphones.png">
+        <div  id="ostContainer" class="hidden">
+            <img src ='https://ksr-ugc.imgix.net/assets/011/533/904/f58978f175eba8065d1b5afe4545876d_original.png?ixlib=rb-4.1.0&crop=faces&w=1552&h=873&fit=crop&v=1463684109&auto=format&frame=1&q=92&s=11db7d50e2a3790bd8ad7ca0537eed92' id="songImage" alt="song image">
+            <p id="ost-name">No song playing.</p>
+            <img class="arrowButton-ost" id="arrowButton-2" src="../Assets/Images/playArrow.png" alt="arrowbutton">
+            <img class="arrowButton-ost" id="pauseButton" src="../Assets/Images/PauseButton/play_circle_FILL0_wght400_GRAD0_opsz24.svg" alt="arrowbutton">
+            <img class="arrowButton-ost" id="arrowButton-right" src="../Assets/Images/playArrow.png" alt="arrowbutton">
+            <p id="ost-time">0:00 // 00:00</p>
+            <div id="ost-player">
+                <audio id="audio-html" src="../Osts/Children of the Ruins.mp3">
+                </audio>
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="top-part"> <!-- CHANGE PFP FROM WEBSITE TO FILE -->
+            <img id="pfp" src="https://cdn.discordapp.com/avatars/708721553340366949/5d28ce43038324c579faae406dfe9f9a.webp" alt="pfp">
+            <div id="text">
+                <p>Games I like</p>
+            </div>
+        </div>    
+            <div id="gamePics">
+               <div class="game" id="placeholderLol">
+                    <image class="gamePictures" id="image" src="https://ksr-ugc.imgix.net/assets/011/533/904/f58978f175eba8065d1b5afe4545876d_original.png?ixlib=rb-4.1.0&crop=faces&w=1552&h=873&fit=crop&v=1463684109&auto=format&frame=1&q=92&s=11db7d50e2a3790bd8ad7ca0537eed92" alt="gameName">
+
+                    <p>undertale</p>
+               </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The video -->
+    <video autoplay muted loop id="GamesShowcase">
+        <source src="../Assets/Videos/GamesVid.mp4" type="video/mp4">
+    </video>
+</body>
+</html>
