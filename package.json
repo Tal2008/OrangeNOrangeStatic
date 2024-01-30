@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "axios": "^1.6.7",
-    "igdb-api-node": "^5.0.2"
+    "dotenv": "^16.4.1",
+    "igdb-api-node": "^5.0.2",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@types/igdb-api-node": "^5.0.3"

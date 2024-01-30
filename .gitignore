@@ -1,3 +1,4 @@
 /node_modules
 public/Assets/Images/DeleteLater
 public/Assets/Videos/ForEditing/
+.env
