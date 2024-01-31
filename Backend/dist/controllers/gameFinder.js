@@ -32,7 +32,7 @@ function requestGame(data) {
             let gameArtwork = getFirstUrl(response.data[0].artworks[0].url);
             let gameCover = getFirstUrl(response.data[0].cover.url);
             let gameName = response.data[0].name;
-            console.log(gameWebsite, gameArtwork, gameCover, gameName); //delete later
+            //console.log(gameWebsite, gameArtwork, gameCover, gameName); //delete later
             gameNames.push(gameName);
             gameWebsites.push(gameWebsite);
             gameArtworks.push(gameArtwork);
@@ -50,3 +50,9 @@ function getFirstUrl(field) {
         return field;
     }
 }
+module.exports = {
+    gameNames,
+    gameWebsites,
+    gameArtworks,
+    gameCovers,
+};

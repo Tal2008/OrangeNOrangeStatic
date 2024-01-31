@@ -1,6 +1,5 @@
 require('dotenv').config({ path: '../../../.env' });
 import axios from 'axios';
-import { request } from 'http';
 
 const games: string = 'Undertale⫻Outcore: Desktop Adventure⫻OneShot: World Machine Edition⫻Hat in Time⫻Star Apprentice⫻Minecraft: Frozen⫻Hollow Knight⫻Paper Mario⫻Stardew Valley⫻Henry Stickmin⫻Danganronpa: Trigger Happy Havoc⫻Doki Doki Literature Club⫻Oxenfree⫻Vivid/Stasis⫻Stanley Parable⫻Cuphead⫻Celeste';
 const gamesArray: string[] = games.split('⫻');
