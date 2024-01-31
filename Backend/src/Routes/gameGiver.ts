@@ -6,6 +6,7 @@ const gameData = require('../controllers/gameFinder');
 
 router.get('/', (req: Request, res: Response) => {
     res.json(gameData);
+    console.log('Game requested.'); //delete later;.
 });
 
 module.exports = router;

@@ -1,3 +1,5 @@
+declare let axios: any;
+
 const games: string = 'Undertale⫻Outcore⫻Oneshot⫻Hat in Time⫻Star Apprentice⫻MC⫻Hollow Knight⫻Paper Mario⫻Stardew Valley⫻Henry Stickmin⫻Danganronpa⫻DDLC⫻Oxenfree⫻vividstasis⫻Stanley Parable⫻Cuphead⫻Celeste';
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -14,6 +16,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
 });
 
+let gamesData = {};
+axios.get('./data/games').then((data: any) => {
+    gamesData = data;
+});
+console.log(gamesData);
 
 const gamesArray: string[] = games.split('⫻');
 console.log(gamesArray)

@@ -9,6 +9,11 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     //DOnt delete:
 });
+let gamesData = {};
+axios.get('./data/games').then((data) => {
+    gamesData = data;
+});
+console.log(gamesData);
 const gamesArray = games.split('⫻');
 console.log(gamesArray);
 for (let game in gamesArray) {
