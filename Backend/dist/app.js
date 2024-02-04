@@ -9,5 +9,6 @@ const PORT = 8080;
 app.use('/', express.static(path.join(__dirname, '..', '..', 'public')));
 console.log(path.join(__dirname, '..', '..', 'public'));
 app.use('/data/games', gameGiver);
+app.use('/color-thief-ts', express.static(path.join(__dirname, '..', '..', 'public', 'node_modules', 'color-thief-ts')));
 //move this to another file later
 app.listen(PORT);
