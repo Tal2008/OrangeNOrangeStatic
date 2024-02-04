@@ -35,7 +35,8 @@ body {
 
 #gamePics {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .game {
@@ -48,9 +49,12 @@ body {
     align-items: center;
     padding: 5px;
     border-radius: 10px;
+    box-shadow: 1px 1px 8px 2px rgba(0,0,0,0.50);
+    margin-bottom: 0.5rem;
 }
 
 .gamePictures {
+    align-self: center;
     max-width: 20vw;
     margin-right: 2vw;
     filter: grayscale(0.8);
