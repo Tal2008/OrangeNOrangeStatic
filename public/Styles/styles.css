@@ -73,7 +73,6 @@ body {
     background-color: black;
     width: auto;
     height: 8vh;
-    position: sticky;
     display: flex;
     align-items: center;
     padding: 0.5rem;
@@ -87,6 +86,8 @@ body {
 #osts {
     display: flex;
     justify-content: end;
+    position: sticky;
+    top: 0%;
 }
 
 .arrowButton-ost {    
