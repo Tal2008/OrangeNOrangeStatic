@@ -1,6 +1,11 @@
-"use strict";
 // import { animationHandler, hideDiv } from "./hideDiv";  //animation + toggle
+//import axios from "axios";
 //I vow to never create anything as messy as this ever again.
+let ostList = [];
+axios.get('./data/ost').then((response) => {
+    ostList = response.data;
+    console.log(response.data, ostList); //delete later
+}); // WARNING: Each time you use this, you need to manually add the base path to the Osts folder.
 window.addEventListener("DOMContentLoaded", () => {
     const ost = document.getElementById('audio-html');
     const ostArrows = document.getElementsByClassName('arrowButton-ost');
@@ -10,7 +15,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const playButton = document.getElementById('pauseButton'); //me: uses as | also me: >proceeds to do <type>
     let ostTime = document.getElementById('ost-time');
     let ostImage = document.getElementById('songImage');
-    let ostList = ['../Osts/Children of the Ruins.mp3', '../Osts/Enemy Approaching.mp3', '../Osts/First Steps.mp3']; //dont forget to make backend.
+    //let ostList: string[] = ['../Osts/Children of the Ruins.mp3', '../Osts/Enemy Approaching.mp3', '../Osts/First Steps.mp3']; //dont forget to make backend.
     let ostImages = ['https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg', '../Assets/Images/DeleteLater/Undertale_2022_Poster.png', 'https://assets1.ignimgs.com/2018/01/23/celeste---button-1516746065043.jpg'];
     let currentSongNum = 0;
     let isFirst = true;
@@ -41,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     }
                 }
                 ostImage.src = ostImages[currentSongNum];
-                ost.src = ostList[currentSongNum];
+                ost.src = "../Osts/" + ostList[currentSongNum];
                 isFirst = false;
                 console.log(currentSongNum); //debug
                 ost.play();

@@ -1,4 +1,4 @@
-// import ColorThief from "colorthief"; //ALWAYS GO TO script.js AND REMOVE THIS LINE MANUALLY.
+//import ColorThief from "colorthief"; //ALWAYS GO TO script.js AND REMOVE THIS LINE MANUALLY.
 const gamePics = document.getElementById('gamePics');
 const gamesString = 'Undertale⫻Outcore⫻Oneshot⫻Hat in Time⫻Star Apprentice⫻MC⫻Hollow Knight⫻Paper Mario⫻Stardew Valley⫻Henry Stickmin⫻Danganronpa⫻DDLC⫻Oxenfree⫻vividstasis⫻Stanley Parable⫻Cuphead⫻Celeste';
 // window.addEventListener("DOMContentLoaded", () => {
