@@ -8,10 +8,9 @@ axios.get('./data/games').then((response) => {
     gamesData = response.data;
     gameNames = gamesData.gameNames;
     gameCovers = gamesData.gameCovers;
-    console.log("GAME NAMES< GAME COVERS<", gameNames, gameCovers);
 });
 // let gameNames = gamesData.gameNames;
-//import axios from "axios"; //ALWAYS DELETE THIS IN DIST FIle.
+// import axios from "axios"; //ALWAYS DELETE THIS IN DIST FIle.
 //I vow to never create anything as messy as this ever again.
 let ostList = [];
 axios.get('./data/ost').then((response) => {
@@ -28,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let ostTime = document.getElementById('ost-time');
     let ostImage = document.getElementById('songImage');
     //let ostList: string[] = ['../Osts/Children of the Ruins.mp3', '../Osts/Enemy Approaching.mp3', '../Osts/First Steps.mp3']; //dont forget to make backend.
-    let ostImages = ['https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg', '../Assets/Images/DeleteLater/Undertale_2022_Poster.png', 'https://assets1.ignimgs.com/2018/01/23/celeste---button-1516746065043.jpg', 'https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg'];
+    //let ostImages: string[] = ['https://pbs.twimg.com/profile_images/1610231810201636870/Nj3OUXrQ_400x400.jpg', '../Assets/Images/DeleteLater/Undertale_2022_Poster.png', 'https://assets1.ignimgs.com/2018/01/23/celeste---button-1516746065043.jpg'];
     let currentSongNum = 0;
     let isFirst = true;
     let playing = false; //for pause button, not done yet. comment .
@@ -43,7 +42,6 @@ window.addEventListener("DOMContentLoaded", () => {
             if (ost && ostName && ostTime) {
                 if (arrow.id.includes('right') && !isFirst) {
                     currentSongNum++;
-                    //ostImage.src = ostImages[currentSongNum];
                     if (currentSongNum == ostList.length) {
                         currentSongNum = 0;
                         ostName.innerHTML = 'loading...';
@@ -51,23 +49,16 @@ window.addEventListener("DOMContentLoaded", () => {
                 }
                 else if (!isFirst) {
                     currentSongNum = currentSongNum - 1;
-                    //ost.src = ostList[currentSongNum];
-                    //ostImage.src = ostImages[currentSongNum];
                     if (currentSongNum < 0) {
                         currentSongNum = ostList.length - 1;
                     }
                 }
-                
                 let gameName = ostList[currentSongNum].split('-').shift(); //Here
-                console.log(gameName, "HELLO TESTING HERE GAMENAME")
-                gameNames.findIndex(game => console.log(game)); // delete
-                let coverIndex = gameNames.findIndex(game => game.includes(gameName));
-                console.log(coverIndex);
-                console.log(gameName);
-
+                gameNames.findIndex((game) => console.log(game)); // delete
+                let coverIndex = gameNames.findIndex((game) => game.includes(gameName));
+                isFirst = false;
                 ostImage.src = gameCovers[coverIndex];
                 ost.src = "../Osts/" + ostList[currentSongNum];
-                isFirst = false;
                 console.log(currentSongNum); //debug
                 ost.play();
                 ost.addEventListener('loadedmetadata', () => {
@@ -85,13 +76,11 @@ window.addEventListener("DOMContentLoaded", () => {
                 if (currentSongNum >= ostList.length) {
                     currentSongNum = 0;
                 }
-                let gameName = ostList[currentSongNum].split('-').pop();
-                console.log(gameName) //debug
-                gameNames.findIndex(game => console.log(game)); // delete
-                let coverIndex = gameNames.findIndex(game => game.includes(gameName));
                 ost.src = "../Osts/" + ostList[currentSongNum];
+                let gameName = ostList[currentSongNum].split('-').shift();
+                let coverIndex = gameNames.findIndex((game) => game.includes(gameName));
                 ostImage.src = gameCovers[coverIndex];
-                let songString = ostList[currentSongNum].split("-").pop(); //here?
+                let songString = ostList[currentSongNum].split("-").pop();
                 ostName ? songString ? ostName.innerHTML = songString : console.log('No song name found.') : console.log('No song name.');
                 ost.play();
             }) : console.log('Song not loaded.');
@@ -104,22 +93,24 @@ window.addEventListener("DOMContentLoaded", () => {
                 let ostName = document.getElementById('ost-name');
                 button.src = '../Assets/Images/PauseButton/stop_circle_FILL0_wght400_GRAD0_opsz24.svg';
                 playing = true;
-                isFirst = false;
-                ostImage.src = ostImages[currentSongNum]; //I promise to do better code reusability in my next project, I swear.
+                let gameName = ostList[currentSongNum].split('-').shift();
+                let coverIndex = gameNames.findIndex((game) => game.includes(gameName));
+                ostImage.src = gameCovers[coverIndex];
+                isFirst ? ost ? ost.src = "../Osts/" + ostList[currentSongNum] : console.log() : console.log();
+                //I promise to do better code reusability in my next project, I swear.
                 ost === null || ost === void 0 ? void 0 : ost.addEventListener('timeupdate', () => { ostTime.innerHTML = `${formatTime(ost.currentTime)} // ${formatTime(ost.duration)}`; });
                 let songString = ostList[currentSongNum].split("-").pop();
                 songString ? ostName.innerHTML = songString : console.log('No song name found.');
                 ost ? ostTime.innerHTML = `${formatTime(ost.currentTime)} // ${formatTime(ost.duration)}` : console.log('No ost.');
                 ost === null || ost === void 0 ? void 0 : ost.play();
+                isFirst = false;
             }
             else {
                 button.src = '../Assets/Images/PauseButton/play_circle_FILL0_wght400_GRAD0_opsz24.svg';
                 playing = false;
                 ost === null || ost === void 0 ? void 0 : ost.pause();
-            };
-            //sorry for the repetition //doesnt work either way
-            //let songString = ostList[currentSongNum].split("/").pop();
-            //ostName ? songString ? ostName.innerHTML = songString : console.log('No song name found.') : console.log('No song name.');
+            }
+            ;
         });
     }
     //This whole file is a fucking mess, I'm very sorry to all my programmer friends.

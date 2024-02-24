@@ -96,11 +96,11 @@ window.addEventListener("DOMContentLoaded", () => {
         if (currentSongNum >= ostList.length) {
             currentSongNum = 0;
         }
-
-        let gameName = ostList[currentSongNum].split('-').pop();
+        
+        ost.src = "../Osts/" + ostList[currentSongNum];
+        let gameName = ostList[currentSongNum].split('-').shift();
         let coverIndex = gameNames.findIndex((game: (string | undefined)[]) => game.includes(gameName));
         ostImage.src = gameCovers[coverIndex];
-        ost.src = "../Osts/" + ostList[currentSongNum];
         
         let songString: string | undefined = ostList[currentSongNum].split("-").pop();
 
@@ -124,9 +124,13 @@ window.addEventListener("DOMContentLoaded", () => {
                 button.src = '../Assets/Images/PauseButton/stop_circle_FILL0_wght400_GRAD0_opsz24.svg';
                 playing = true;
 
+                let gameName = ostList[currentSongNum].split('-').shift();
+                let coverIndex = gameNames.findIndex((game: (string | undefined)[]) => game.includes(gameName));
+                ostImage.src = gameCovers[coverIndex];
                 
-                isFirst = false;
-                ostImage.src = ostImages[currentSongNum] //I promise to do better code reusability in my next project, I swear.
+                isFirst ? ost ? ost.src = "../Osts/" + ostList[currentSongNum]: console.log(): console.log();
+
+                //I promise to do better code reusability in my next project, I swear.
                 ost?.addEventListener('timeupdate', () => {ostTime.innerHTML = `${formatTime(ost.currentTime)} // ${formatTime(ost.duration)}`;})
 
                 let songString: string | undefined = ostList[currentSongNum].split("-").pop();
@@ -135,6 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 
                 ost ? ostTime.innerHTML = `${formatTime(ost.currentTime)} // ${formatTime(ost.duration)}`: console.log('No ost.');   
                 ost?.play();
+                isFirst = false;
             }
             else {
                 button.src = '../Assets/Images/PauseButton/play_circle_FILL0_wght400_GRAD0_opsz24.svg';
