@@ -54,3 +54,4 @@ function createGame(gamesData) {
 setTimeout(() => {
     createGame(gamesData);
 }, 200);
+export { gamesData };
