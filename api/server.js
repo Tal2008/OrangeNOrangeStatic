@@ -1,5 +1,5 @@
 const express = require('express');
-const app = require('../app');
+const app = require('../Backend/dist/app');
 const { createServer } = require('http');
 const { parse } = require('url');
 const { Server } = require('http');
