@@ -1,8 +1,0 @@
-{
-    "rewrites": [
-      { "source": "/data/games", "destination": "/api/server" },
-      { "source": "/data/ost", "destination": "/api/server" },
-      { "source": "/(.*)", "destination": "/public/$1" }
-    ]
-  }
-  
