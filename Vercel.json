@@ -1,0 +1,7 @@
+{
+    "routes": [
+      { "src": "/data/(.*)", "dest": "/Backend/dist/$1" },
+      { "src": "/(.*)", "dest": "/public/dist/$1" }
+    ]
+  }
+  
