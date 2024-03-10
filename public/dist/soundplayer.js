@@ -10,13 +10,14 @@ axios.get('./data/games').then((response) => {
     gameCovers = gamesData.gameCovers;
 });
 // let gameNames = gamesData.gameNames;
-// import axios from "axios"; //ALWAYS DELETE THIS IN DIST FIle.
+//import axios from "axios"; //ALWAYS DELETE THIS IN DIST FIle.
 //I vow to never create anything as messy as this ever again.
 let ostList = [];
 axios.get('./data/ost').then((response) => {
     ostList = response.data;
     console.log(response.data, ostList); //delete later
 }); // WARNING: Each time you use this, you need to manually add the base path to the Osts folder.
+let ostEasterEggs = ['../Osts/EasterEgg-metal-pipe-falling-sound.mp3'];
 window.addEventListener("DOMContentLoaded", () => {
     const ost = document.getElementById('audio-html');
     const ostArrows = document.getElementsByClassName('arrowButton-ost');
@@ -61,6 +62,13 @@ window.addEventListener("DOMContentLoaded", () => {
                 ost.src = "../Osts/" + ostList[currentSongNum];
                 console.log(currentSongNum); //debug
                 ost.play();
+                let easterEgg = false;
+                let chance = Math.random() * 100;
+                if (chance <= 5) {
+                    easterEgg = true;
+                    ost.src = ostEasterEggs[0];
+                    ostImage.src = "../Assets/Images/EasterEggs/MetalPipe.jpg";
+                }
                 ost.addEventListener('loadedmetadata', () => {
                     ostTime.innerHTML = `${formatTime(ost.currentTime)} // ${formatTime(ost.duration)}`;
                     ost.play();
@@ -68,6 +76,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 ost.addEventListener('timeupdate', () => { ostTime.innerHTML = `${formatTime(ost.currentTime)} // ${formatTime(ost.duration)}`; });
                 let songString = ostList[currentSongNum].split("-").pop();
                 songString ? ostName.innerHTML = songString : console.log('No song name found.');
+                easterEgg ? ostName.innerHTML = "Metal Pipe" : console.log();
                 ostTime.innerHTML = `${formatTime(ost.currentTime)} // ${formatTime(ost.duration)}`;
             }
             console.log(currentSongNum); //debug

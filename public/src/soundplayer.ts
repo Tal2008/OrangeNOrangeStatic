@@ -18,6 +18,7 @@ axios.get('./data/ost').then((response: any) => {
     ostList = response.data;
     console.log(response.data, ostList) //delete later
 }); // WARNING: Each time you use this, you need to manually add the base path to the Osts folder.
+let ostEasterEggs: string[] = ['../Osts/EasterEgg-metal-pipe-falling-sound.mp3']
 
 window.addEventListener("DOMContentLoaded", () => {
     const ost: HTMLAudioElement | null = document.getElementById('audio-html') as HTMLAudioElement;
@@ -74,6 +75,14 @@ window.addEventListener("DOMContentLoaded", () => {
             console.log(currentSongNum) //debug
             ost.play()
             
+            let easterEgg: boolean = false;
+            let chance: number = Math.random() * 100
+            if (chance <= 5) {
+                easterEgg = true;
+                ost.src = ostEasterEggs[0];   
+                ostImage.src = "../Assets/Images/EasterEggs/MetalPipe.jpg";
+            }
+
             ost.addEventListener('loadedmetadata', ()=> {
                 ostTime.innerHTML = `${formatTime(ost.currentTime)} // ${formatTime(ost.duration)}`;
                 ost.play()
@@ -85,6 +94,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
             songString ? ostName.innerHTML = songString : console.log('No song name found.'); 
             
+            easterEgg ? ostName.innerHTML = "Metal Pipe": console.log();
+
             ostTime.innerHTML = `${formatTime(ost.currentTime)} // ${formatTime(ost.duration)}`;        
         }
 
