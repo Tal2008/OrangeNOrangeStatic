@@ -1,8 +1,8 @@
 {
-    "routes": [
-      { "src": "/data/games", "dest": "/api/server" },
-      { "src": "/data/ost", "dest": "/api/server" },
-      { "src": "/(.*)", "dest": "/public/dist/$1" }
+    "rewrites": [
+      { "source": "/data/games", "destination": "/api/server" },
+      { "source": "/data/ost", "destination": "/api/server" },
+      { "source": "/(.*)", "destination": "/public/$1" }
     ]
   }
   
