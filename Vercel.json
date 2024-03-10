@@ -1,6 +1,7 @@
 {
     "routes": [
-      { "src": "/data/(.*)", "dest": "/Backend/dist/$1" },
+      { "src": "/data/games", "dest": "/data/games" },
+      { "src": "/data/ost", "dest": "/data/ost" },
       { "src": "/(.*)", "dest": "/public/dist/$1" }
     ]
   }
