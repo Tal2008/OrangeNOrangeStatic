@@ -1,7 +1,7 @@
 {
     "routes": [
-      { "src": "/data/games", "dest": "/data/games" },
-      { "src": "/data/ost", "dest": "/data/ost" },
+      { "src": "/data/games", "dest": "/api/server" },
+      { "src": "/data/ost", "dest": "/api/server" },
       { "src": "/(.*)", "dest": "/public/dist/$1" }
     ]
   }

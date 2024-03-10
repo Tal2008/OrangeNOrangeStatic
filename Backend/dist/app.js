@@ -12,4 +12,6 @@ console.log(path.join(__dirname, '..', '..', 'public'));
 app.use('/data/games', gameGiver);
 app.use('/data/ost', ostGiver);
 //move this to another file later
-app.listen(PORT);
+//app.listen(PORT);
+module.exports = app;
+
